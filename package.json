@@ -1,0 +1,31 @@
+{
+  "name": "tsqljs",
+  "version": "0.0.1",
+  "description": "A sql generator for the t-sql dialect",
+  "main": "lib/tsql.js",
+  "scripts": {
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/swlkr/tsqljs.git"
+  },
+  "keywords": [
+    "sql",
+    "tsql",
+    "tsqljs",
+    "mssql",
+    "sql server"
+  ],
+  "author": "Sean Walker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/swlkr/tsqljs/issues"
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "chai-as-promised": "^4.1.1",
+    "mocha": "*"
+  },
+  "homepage": "https://github.com/swlkr/tsqljs"
+}
