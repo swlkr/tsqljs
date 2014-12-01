@@ -66,8 +66,11 @@ sql.delete('users').where('firstName = ?', 'Johnny').toQuery();
 
 ### Output
 ```js
-// { text: "insert into users (firstName, lastName) values (@firstName, @lastName)", values: {"@firstName": "Johnny", "@lastName": "Bravo"} }
-sql.insert('users', { firstName: 'Johnny', lastName: 'Bravo' }).output('*');
+// { text: "insert into users (firstName, lastName) output inserted.* values (@1, @2)", values: ['Johnny', 'Appleseed'] }
+sql.insert('users', { firstName: 'Johnny', lastName: 'Appleseed' }).output();
+
+// { text: "delete from users output deleted.* where firstName = @1", values: ['Johnny'] }
+sql.delete('users').output().where('firstName = ?', 'Johnny').toQuery()
 ```
 
 ### Order
