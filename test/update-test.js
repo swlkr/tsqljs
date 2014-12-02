@@ -12,4 +12,9 @@ describe('update', function() {
     expect(sql.update('users', { salary: 'billions', house: 'private island' }).where('job = ?', 'CEO').toQuery())
       .to.deep.equal({ text: 'update users set salary = @1, house = @2 where job = @3', values: ['billions', 'private island', 'CEO'] })
   });
+
+  it('should handle output statement', function() {
+    expect(sql.update('users', { firstName: 'Sally' }).output().where('firstName = ?', 'Johnny').toQuery())
+      .to.deep.equal({text: 'update users set firstName = @1 output inserted.* where firstName = @2', values: ['Sally', 'Johnny']});
+  });
 });
