@@ -31,13 +31,13 @@ sql.select('id', 'name').from('users').toQuery();
 
 ```js
 // { text: "select * from users where id = @1", values: [1] }
-sql.select().from('users').where('id = ?', 1).toQuery();
+sql.select().from('users').where('id = @1', 1).toQuery();
 
 // { text: "select * from users where firstName = @1 and lastName = @2", values: ['Johnny', 'Appleseed'] }
-sql.select().from('users').where('firstName = ? and lastName = ?', 'Johnny', 'Appleseed').toQuery();
+sql.select().from('users').where('firstName = @1 and lastName = @2', 'Johnny', 'Appleseed').toQuery();
 
 // { text: "select * from users where firstName = @1 or lastName = @2", values: ['Johnny', 'Appleseed'] }
-sql.select().from('users').where('firstName = ? or lastName = ?', 'Johnny', 'Appleseed').toQuery();
+sql.select().from('users').where('firstName = @1 or lastName = @2', 'Johnny', 'Appleseed').toQuery();
 ```
 
 ### Insert
@@ -51,17 +51,17 @@ sql.insert('users', { firstName: 'Johnny', lastName: 'Appleseed' }).toQuery();
 
 ```js
 // { text: "update users set firstName = @1 where firstName = @2", values: ['Sally', 'Johnny'] }
-sql.update('users', { firstName: 'Sally' }).where('firstName = ?', 'Johnny').toQuery();
+sql.update('users', { firstName: 'Sally' }).where('firstName = @1', 'Johnny').toQuery();
 
 // { text: "update users set salary = @1, house = @2 where job = @3", values: ['billions', 'private island', 'CEO'] }
-sql.update('users', { salary: 'billions', house: 'private island' }).where('job = ?', 'CEO').toQuery();
+sql.update('users', { salary: 'billions', house: 'private island' }).where('job = @1', 'CEO').toQuery();
 ```
 
 ### Delete
 
 ```js
 // { text: "delete from users where firstName = @1", values: ['Johnny'] }
-sql.delete('users').where('firstName = ?', 'Johnny').toQuery();
+sql.delete('users').where('firstName = @1', 'Johnny').toQuery();
 ```
 
 ### Output
@@ -70,7 +70,7 @@ sql.delete('users').where('firstName = ?', 'Johnny').toQuery();
 sql.insert('users', { firstName: 'Johnny', lastName: 'Appleseed' }).output();
 
 // { text: "delete from users output deleted.* where firstName = @1", values: ['Johnny'] }
-sql.delete('users').output().where('firstName = ?', 'Johnny').toQuery()
+sql.delete('users').output().where('firstName = @1', 'Johnny').toQuery()
 ```
 
 ### Order
