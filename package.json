@@ -1,6 +1,6 @@
 {
   "name": "tsqljs",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A sql generator for the t-sql dialect",
   "main": "lib/tsql.js",
   "scripts": {
